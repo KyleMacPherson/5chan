@@ -1,9 +1,16 @@
 require 'sinatra/base'
+require_relative '../data_mapper_setup'
 
 class Chan < Sinatra::Base
-  
+  use Rack::MethodOverride
+
   get '/' do
-    'Hello 5Chan!'
+    @message = Post.all
+    erb :index
+  end
+
+  post '/json' do
+
   end
 
   # start the server if ruby file executed directly
