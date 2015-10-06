@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative '../data_mapper_setup'
+require 'json'
 
 class Chan < Sinatra::Base
   use Rack::MethodOverride
@@ -9,8 +10,14 @@ class Chan < Sinatra::Base
     erb :index
   end
 
-  post '/json' do
+  post '/json/new' do
+    @submission = Post.new
+    @submission.post = params[:post_submission]
+  end
 
+  get '/json' do
+    @submissions = Post.all
+    @submissions.to_json
   end
 
   # start the server if ruby file executed directly
