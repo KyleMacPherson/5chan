@@ -1,0 +1,10 @@
+source 'http://rubygems.org'
+
+gem 'sinatra'
+gem 'capybara'
+gem 'rspec'
+gem 'rspec-sinatra'
+gem 'rack'
+gem 'json'
+gem 'data_mapper'
+gem 'database_cleaner'
