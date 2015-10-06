@@ -11,13 +11,15 @@ class Chan < Sinatra::Base
   end
 
   post '/json/new' do
-    @submission = Post.new
-    @submission.post = params[:post_submission]
+    @submission = Post.create(post: params[:post_submission])
+    p Post.all
+    redirect to '/'
   end
 
   get '/json' do
     @submissions = Post.all
-    @submissions.to_json
+    @api = @submissions.to_json
+    erb :api
   end
 
   # start the server if ruby file executed directly

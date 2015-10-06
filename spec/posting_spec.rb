@@ -22,4 +22,5 @@ feature 'Anons posting' do
     click_button "Submit"
     expect(page).to have_content("New post here")
   end
+
 end
