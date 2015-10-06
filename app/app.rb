@@ -7,13 +7,11 @@ class Chan < Sinatra::Base
 
   get '/' do
     @message = Post.all
-    erb :index
   end
 
   post '/json/new' do
     @submission = Post.create(post: params[:post_submission])
     p Post.all
-    redirect to '/'
   end
 
   get '/json' do

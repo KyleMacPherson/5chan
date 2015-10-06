@@ -1,22 +1,10 @@
-function Player() {
-}
-Player.prototype.play = function(song) {
-  this.currentlyPlayingSong = song;
-  this.isPlaying = true;
-};
+  function postSubmit() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/json/new", true);
+    xhttp.send(postCapture());
+  };
 
-Player.prototype.pause = function() {
-  this.isPlaying = false;
-};
-
-Player.prototype.resume = function() {
-  if (this.isPlaying) {
-    throw new Error("song is already playing");
+  function postCapture() {
+    var message = document.getElementById("post_submission").value;
+    return message;
   }
-
-  this.isPlaying = true;
-};
-
-Player.prototype.makeFavorite = function() {
-  this.currentlyPlayingSong.persistFavoriteStatus(true);
-};
