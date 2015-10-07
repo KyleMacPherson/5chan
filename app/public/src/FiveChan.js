@@ -8,5 +8,5 @@ console.log('do the funk');
 
   function postCapture() {
     var message = document.getElementById("message").value;
-    return "post[message]=" + message;
+    return JSON.stringify({"post" : message});
   }

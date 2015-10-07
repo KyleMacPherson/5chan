@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/json'
+require 'json'
 require_relative '../data_mapper_setup'
 
 class Chan < Sinatra::Base
@@ -19,9 +20,10 @@ class Chan < Sinatra::Base
   end
 
   post '/json' do
-    content_type :json
-    submission = Post.new(params[:message])
+    post = request.body.read
+    submission = Post.new(JSON.parse(post))
     if submission.save
+      p Post.all
       status 201
     else
       status 500
