@@ -7,6 +7,6 @@ console.log('do the funk');
   };
 
   function postCapture() {
-    var message = document.getElementById("post_submission").value;
-    return message;
+    var message = document.getElementById("message").value;
+    return "post[message]=" + message;
   }

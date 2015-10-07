@@ -10,7 +10,6 @@ class Chan < Sinatra::Base
 
   get '/' do
     erb :index
-    # message = Post.all
   end
 
   get '/json' do
@@ -20,6 +19,7 @@ class Chan < Sinatra::Base
   end
 
   post '/json' do
+    content_type :json
     submission = Post.new(params[:message])
     if submission.save
       status 201
