@@ -1,23 +1,31 @@
 require 'sinatra/base'
+require 'sinatra/json'
 require_relative '../data_mapper_setup'
-require 'json'
 
 class Chan < Sinatra::Base
   use Rack::MethodOverride
 
-  get '/' do
-    @message = Post.all
-  end
+  set :static, true
+  set :root, File.dirname(__FILE__)
 
-  post '/json/new' do
-    @submission = Post.create(post: params[:post_submission])
-    p Post.all
+  get '/' do
+    erb :index
+    # message = Post.all
   end
 
   get '/json' do
-    @submissions = Post.all
-    @api = @submissions.to_json
-    erb :api
+    content_type :json
+    submissions = Post.all
+    submissions.to_json
+  end
+
+  post '/json' do
+    submission = Post.new(params[:message])
+    if submission.save
+      status 201
+    else
+      status 500
+    end
   end
 
   # start the server if ruby file executed directly

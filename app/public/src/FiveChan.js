@@ -1,6 +1,8 @@
+console.log('do the funk');
+
   function postSubmit() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/json/new", true);
+    xhttp.open("POST", "/json", true);
     xhttp.send(postCapture());
   };
 

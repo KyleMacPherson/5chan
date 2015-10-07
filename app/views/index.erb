@@ -1,12 +1,4 @@
-<form action='/json/new' method='post'>
-  <textarea id="post_submission"></textarea>
-  <input type="submit" value="Submit">
-</form>
+<textarea id="message"></textarea>
+<button onclick="postSubmit()">Submit</button>
 
 <h1>5Chan</h1>
-
-  <ul id="posts">
-    <% @message.each do |message| %>
-      <li><%= message.post %></li>
-    <% end %>
-  </ul>
