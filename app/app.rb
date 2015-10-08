@@ -16,7 +16,7 @@ class Chan < Sinatra::Base
   get '/json' do
     content_type :json
     post = Post.all
-    boss = post.to_json
+    post.to_json
   end
 
   post '/json' do
