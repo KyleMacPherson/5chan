@@ -16,14 +16,13 @@ class Chan < Sinatra::Base
   get '/json' do
     content_type :json
     submissions = Post.all
-    submissions.to_json
+    x = submissions.to_json
   end
 
   post '/json' do
     post = request.body.read
     submission = Post.new(JSON.parse(post))
     if submission.save
-      p Post.all
       status 201
     else
       status 500
