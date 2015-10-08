@@ -1,7 +1,5 @@
 console.log('do the funk');
 
-  var allPosts = []
-
   function postSubmit() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/json", true);
@@ -16,10 +14,10 @@ console.log('do the funk');
   function postDisplay() {
     var xhttpGet = new XMLHttpRequest();
     xhttpGet.open("GET", "/json", true);
-    xhttpGet.send();
-    return xhttpGet;
+    xhttpGet.send(null);
   };
 
   function displayOnPage() {
-    document.getElementById("posts").innerHTML = JSON.parse(postDisplay());
+    var display = JSON.parse(xhttpGet.responseText);
+    document.getElementById("posts").innerHTML = "<li>" + display + "</li>";
   };
