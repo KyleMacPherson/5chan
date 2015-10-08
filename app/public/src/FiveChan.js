@@ -19,5 +19,5 @@ console.log('do the funk');
 
   function displayOnPage() {
     var display = JSON.parse(xhttpGet.responseText);
-    document.getElementById("posts").innerHTML = "<li>" + display + "</li>";
+
   };
