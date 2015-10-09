@@ -16,6 +16,14 @@ class Chan < Sinatra::Base
   get '/json' do
     content_type :json
     post = Post.all
+    posts = post.map {|post| post.post}
+    p posts
+    posts.to_json
+  end
+
+  get '/json/new' do
+    content_type :json
+    post = Post.last.post
     post.to_json
   end
 
